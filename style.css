@@ -1,0 +1,96 @@
+:root {
+  --amount-colums: 4;
+  --gap: 20px;
+  --card-height: 100px;
+  --color-suc: #198754;
+  --color-p: #0d6efd;
+  --color-d: #dc3545;
+}
+
+.container-limit {
+  padding: 0 10px;
+  max-width: 1200px;
+}
+
+.block-title {
+  margin-bottom: 50px;
+  padding: 20px;
+  border-radius: 0 0 5px 5px;
+  background-color: var(--color-p);
+}
+
+.block-title__title {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.wrap-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form--new-student {
+  margin-bottom: 50px;
+  padding: 20px;
+  max-width: 770px;
+  border-radius: 5px;
+  background-color: #eaeaea;
+}
+
+.wrap-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-control--warning {
+  border: 1px solid var(--color-d);
+}
+
+.btn-sort {
+  color: #000;
+  background-color: #fff;
+  width: 100%;
+}
+
+.btn-sort--active {
+  color: #fff;
+  background-color: var(--color-p);
+}
+
+.wrap-messages-error {
+  margin: 0 0 20px 0;
+}
+.wrap-messages-error__text {
+  margin: 0;
+  color: var(--color-d);
+}
+
+/* table */
+.table .th {
+  padding-left: 0;
+}
+.table .th:last-child {
+  padding-right: 0;
+}
+.table .td {
+  padding-left: 12px;
+}
+.students__date:not(:last-child) {
+  margin-right: 20px;
+}
+
+.wrap-inputs--filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+}
+.filter__label {
+  flex-grow: 1;
+}
+.filter__span {
+  font-size: 16px;
+  color: #666;
+}
