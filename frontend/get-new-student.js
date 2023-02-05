@@ -3,8 +3,7 @@ function createObjNewStudentFromForm(formNewStudent) {
     let objNewStudent = {};
     copyInfoFromForm(formNewStudent, objNewStudent);
     normalazeLetters(objNewStudent);
-    concatinateFIO(objNewStudent);
-    deleteSeparatedPartsOfFIO(objNewStudent);
+    sendNewStudentToServer(objNewStudent);
     pushObjNewStudentToArrStudents(objNewStudent);
     clearForm(formNewStudent);
   }
@@ -80,15 +79,11 @@ function validateInputDate(date, dateType) {
     case 'birthday':
       dateMin = new Date('1900-01-01')
       break;
-    case 'startEducation':
+    case 'studyStart':
       dateMin = new Date('2000-01-01')
   }
 
-  if (date >= dateMin && date <= dateNow) {
-    return true;
-  } else {
-    return false;
-  }
+  return date >= dateMin && date <= dateNow;
 } //validateInputDate
 
 function markErrorInput(obj) {
@@ -106,13 +101,13 @@ function messageErrorForm(formNewStudent, name) {
     case 'surname':
       text = 'Короткая фамилия'
     break;
-    case 'middlename':
+    case 'lastname':
       text = 'Короткое отчество'
       break;
       case 'birthday':
         text = `Дата рождения должна быть не раньше 01.01.1900 и не позже ${dateNow.getFullYear()}`
       break;
-      case 'startEducation':
+      case 'studyStart':
         text = `Обучение может начаться не раньше 2000 и не позже ${dateNow.getFullYear()}`
       break;
       case 'faculty':
@@ -139,8 +134,6 @@ function cleanUpWarnings(formNewStudent) {
 }
 
 function copyInfoFromForm(formNewStudent, objNewStudent) {
-
-
   readForm(formNewStudent, objNewStudent)
 }
 
@@ -172,19 +165,8 @@ function normalazeLetters(objNewStudent) {
   }
 } //normalazeLetters
 
-function concatinateFIO(objNewStudent) {
-  const fio = `${objNewStudent.surname} ${objNewStudent.name} ${objNewStudent.middlename}`;
-  objNewStudent.fio = fio;
-}
-
-function deleteSeparatedPartsOfFIO(objNewStudent) {
-  delete objNewStudent.surname;
-  delete objNewStudent.name;
-  delete objNewStudent.middlename;
-}
-
-function pushObjNewStudentToArrStudents(objNewStudent) {
-  arrStudents.push(objNewStudent);
+async function pushObjNewStudentToArrStudents(objNewStudent) {
+    // arrStudents.push(objNewStudent);
 }
 
 function clearForm(formNewStudent) {

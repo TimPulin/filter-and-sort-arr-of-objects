@@ -1,41 +1,4 @@
 
-let State = [];
-let arrStudents = [
-  {
-    fio: 'Великанов Мадест Игоревич',
-    birthday: new Date('1993-03-08'),
-    faculty: 'Математика',
-    startEducation: new Date('2013-09-01'),
-  },
-  {
-    fio: 'Веселов Андрей Викторович',
-    birthday: new Date('2000-08-17'),
-    faculty: 'Физика',
-    startEducation: new Date('2016-09-01'),
-  },
-  {
-    fio: 'Джигарханян Акоп Ментандилович',
-    birthday: new Date('1980-03-25'),
-    faculty: 'Химия',
-    startEducation: new Date('2019-09-01'),
-  },
-  {
-    fio: 'Коркин Валерий Петрович',
-    birthday: new Date('2004-01-31'),
-    faculty: 'История',
-    startEducation: new Date('2022-09-01'),
-  },
-  {
-    fio: 'Церетели Зураб Сулейманович',
-    birthday: new Date('1999-04-22'),
-    faculty: 'Физика',
-    startEducation: new Date('2020-09-01'),
-  },
-];
-State[0] = arrStudents;
-
-
-
 function createFormNewStudent() {
   const wrapForm = document.createElement('div');
   const wrapInputs = document.createElement('div');
@@ -97,11 +60,7 @@ function createMessageErrorForm(textError) {
   return message;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderFormNewStudent();
-});
-
-function renderFormNewStudent() {
+function renderFormNewStudent(arrStudents) {
   const container = document.getElementById('studentTableApp');
   const formNewStudent = createFormNewStudent();
   const wrapInputs = formNewStudent.wrapInputs;
@@ -119,7 +78,7 @@ function renderFormNewStudent() {
     },
     {
       inputType: 'text',
-      inputName: 'middlename',
+      inputName: 'lastname',
       text: 'Отчество',
     },
     {
@@ -129,7 +88,7 @@ function renderFormNewStudent() {
     },
     {
       inputType: 'number',
-      inputName: 'startEducation',
+      inputName: 'studyStart',
       text: 'Год начала обучения',
     },
     {
@@ -142,7 +101,6 @@ function renderFormNewStudent() {
   formNewStudent.form.addEventListener('submit', function(e) {
     e.preventDefault();
     createObjNewStudentFromForm(formNewStudent);
-    renderStudents(arrStudents);
   })
 
   container.append(formNewStudent.wrapForm);

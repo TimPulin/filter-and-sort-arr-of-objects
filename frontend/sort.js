@@ -1,15 +1,15 @@
 
 // function sortStudents(currentBtn) {
-  function sortStudents(currentBtn, filtredArrStudents) {
+function sortStudents(currentBtn, filtredArrStudents) {
   const sortKey = currentBtn.dataset.sortBy;
 
   if (typeof filtredArrStudents[0][sortKey] === "object") {
     sortOfTypeDate(filtredArrStudents, sortKey);
-} else if (typeof filtredArrStudents[0][sortKey] === "string") {
-  sortOfTypeStrings(filtredArrStudents, sortKey);
-}
+  } else if (typeof filtredArrStudents[0][sortKey] === "string") {
+    sortOfTypeStrings(filtredArrStudents, sortKey);
+  }
 
-  renderStudents(filtredArrStudents);
+  addStudentsinTable(filtredArrStudents);
 }
 
 function sortOfTypeDate(arr, sortKey) {

@@ -5,7 +5,7 @@ function createBlockFilters() {
   return div;
 }
 
-function createFilterItems(spanText, inputType, valueFilterBy) {
+function createFilterItems(spanText, inputType, valueFilterBy, arrStudents) {
   const label = document.createElement('label');
   const span = document.createElement('span');
   const input = document.createElement('input');
@@ -17,9 +17,7 @@ function createFilterItems(spanText, inputType, valueFilterBy) {
   input.type = inputType;
   input.setAttribute('data-filter-by', valueFilterBy);
   input.addEventListener('input', () => {
-
-
-    filterStudents(input)
+    filterStudents(arrStudents)
   });
 
   label.append(span);
@@ -28,11 +26,7 @@ function createFilterItems(spanText, inputType, valueFilterBy) {
   return label;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderBlockFilters();
-});
-
-function renderBlockFilters() {
+function renderBlockFilters(arrStudents) {
   const container = document.getElementById('studentTableApp');
   const blockFilters = createBlockFilters();
   const featuresFiltersElems = [
@@ -54,20 +48,20 @@ function renderBlockFilters() {
     {
       spanText: 'годам обучения',
       inputType: 'number',
-      valueFilterBy: 'startEducation',
+      valueFilterBy: 'studyStart',
     },
   ]
 
   container.append(blockFilters);
 
   for (const features of featuresFiltersElems) {
-    const filter = renderFilter(features, blockFilters);
+    const filter = renderFilter(features, arrStudents);
     blockFilters.append(filter);
   }
 } //renderBlockFilters
 
-function renderFilter(features) {
-  const filter = createFilterItems(features.spanText, features.inputType, features.valueFilterBy);
+function renderFilter(features, arrStudents) {
+  const filter = createFilterItems(features.spanText, features.inputType, features.valueFilterBy, arrStudents);
   return filter;
 }
 
