@@ -65,20 +65,9 @@ function createBtnDelete(tr, studentID, arrStudents) {
   btn.addEventListener('click', () => {
     if (confirm('Удалить?') ) {
       deleteStudentFromServer(studentID);
-    //   deleteStudentFromArrStudents(studentID, arrStudents);
-    //   deleteStudentFromTable(tr);
     }
   })
   return btn;
-}
-
-function deleteStudentFromTable(tr) {
-  tr.remove();
-}
-
-function deleteStudentFromArrStudents(studentID, arrStudents) {
-  const studentIndexInArrStudents = arrStudents.findIndex(item => item.id === studentID);
-  arrStudents.splice(studentIndexInArrStudents, 1)
 }
 
 function renderTable(arrStudents) {
